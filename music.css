@@ -1,0 +1,528 @@
+/* 
+ * ARQUIVO CSS PRINCIPAL
+ * Estilos minimalistas inspirados em "Noite Estrelada" de Van Gogh
+ * Versão formal e moderna
+ */
+
+/* 
+ * VARIÁVEIS DE CORES (Custom Properties)
+ * Define uma paleta de cores inspirada na obra, mas com tons mais escuros e formais
+ */
+:root {
+    /* Cores principais azuis (noite) */
+    --azul-profundo: #0a1931;    /* Azul muito escuro para o fundo */
+    --azul-medio: #1a3a5f;       /* Azul médio para containers */
+    --azul-suave: #2d5a8a;       /* Azul suave para destaques */
+    
+    /* Cores douradas (estrelas) */
+    --dourado-sutil: #d4af37;    /* Dourado para elementos principais */
+    --dourado-claro: #f4e4a6;    /* Dourado claro para detalhes */
+    
+    /* Escala de cinzas para texto e elementos neutros */
+    --cinza-escuro: #2c3e50;     /* Cinza escuro para texto */
+    --cinza-medio: #7f8c8d;      /* Cinza médio para subtítulos */
+    --cinza-claro: #ecf0f1;      /* Cinza claro para texto principal */
+    
+    /* Cores neutras */
+    --branco: #ffffff;           /* Branco puro */
+    --preto: #1a1a2e;            /* Preto azulado */
+}
+
+/* 
+ * RESET E CONFIGURAÇÕES GERAIS
+ * Remove estilos padrão do navegador e configura box model
+ */
+* {
+    margin: 0;                   /* Remove margens padrão */
+    padding: 0;                  /* Remove paddings padrão */
+    box-sizing: border-box;      /* Inclui padding e border no cálculo do width/height */
+}
+
+/* 
+ * ESTILOS DO BODY
+ * Configurações gerais da página
+ */
+body {
+    font-family: 'Inter', sans-serif;  /* Define a fonte principal */
+    background-color: var(--azul-profundo); /* Fundo azul profundo */
+    color: var(--cinza-claro);         /* Cor do texto principal */
+    min-height: 100vh;                 /* Garante que o body ocupe pelo menos a tela toda */
+    line-height: 1.6;                  /* Espaçamento entre linhas para melhor legibilidade */
+    position: relative;                /* Permite posicionamento absoluto dos filhos */
+    overflow-x: hidden;                /* Remove scroll horizontal */
+}
+
+/* 
+ * ESTRELAS DE FUNDO (PSEUDO-ELEMENTO)
+ * Cria um padrão de estrelas fixas usando gradientes radiais
+ */
+body::before {
+    content: "";                       /* Elemento vazio necessário para pseudo-elementos */
+    position: fixed;                   /* Fixa no fundo, não rola com a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 
+     * Gradientes radiais para criar pontos (estrelas)
+     * Cada radial-gradient cria um ponto em posição específica
+     * Sintaxe: radial-gradient(tamanhoX tamanhoY at posX posY, cor tamanho, transparent)
+     */
+    background-image: 
+        radial-gradient(1px 1px at 10% 15%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 20% 35%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 30% 70%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 40% 50%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 60% 25%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 70% 60%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1px 1px at 80% 40%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 90% 75%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1px 1px at 15% 85%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 85% 15%, var(--dourado-claro) 1px, transparent 1px);
+    
+    background-size: 100px 100px;      /* Tamanho do padrão que se repete */
+    opacity: 0.15;                     /* Transparência para sutileza */
+    z-index: -1;                       /* Coloca atrás de todo o conteúdo */
+}
+
+/* 
+ * CONTAINER PRINCIPAL
+ * Centraliza e limita a largura do conteúdo
+ */
+.container {
+    max-width: 1200px;                 /* Largura máxima em telas grandes */
+    margin: 0 auto;                    /* Centraliza horizontalmente */
+    padding: 0 20px;                   /* Padding lateral para não colar nas bordas */
+    min-height: 100vh;                 /* Ocupa pelo menos a altura da tela */
+    display: flex;                     /* Usa flexbox para layout */
+    flex-direction: column;            /* Organiza filhos em coluna */
+}
+
+/* 
+ * HEADER (CABEÇALHO)
+ */
+.header {
+    text-align: center;                /* Centraliza o conteúdo */
+    padding: 60px 0 30px;              /* Espaçamento interno: topo 60px, base 30px */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Linha sutil dourada na base */
+    margin-bottom: 50px;               /* Espaço abaixo do header */
+}
+
+.header h1 {
+    font-size: 2.8rem;                 /* Tamanho grande para o título */
+    font-weight: 700;                  /* Peso da fonte: bold */
+    color: var(--branco);              /* Cor branca para contraste */
+    margin-bottom: 10px;               /* Espaço abaixo do título */
+    letter-spacing: -0.5px;            /* Reduce letter spacing para estética moderna */
+}
+
+.header h1 i {
+    color: var(--dourado-sutil);       /* Ícone dourado para destaque */
+    margin-right: 15px;                /* Espaço entre ícone e texto */
+}
+
+.subtitle {
+    font-size: 1.2rem;                 /* Tamanho menor que o título */
+    color: var(--cinza-medio);         /* Cor cinza para subtítulo */
+    font-weight: 300;                  /* Peso fino */
+    font-style: italic;                /* Itálico para estilo */
+}
+
+/* 
+ * CONTEÚDO PRINCIPAL
+ */
+.main-content {
+    flex: 1;                           /* Ocupa o espaço disponível entre header e footer */
+    padding-bottom: 40px;              /* Espaço na base */
+}
+
+.selection-section {
+    max-width: 800px;                  /* Largura máxima para melhor leitura */
+    margin: 0 auto;                    /* Centraliza a seção */
+}
+
+.selection-section h2 {
+    font-size: 1.8rem;                 /* Tamanho para título de seção */
+    font-weight: 600;                  /* Peso semi-bold */
+    color: var(--branco);              /* Cor branca */
+    margin-bottom: 40px;               /* Espaço abaixo */
+    text-align: center;                /* Centralizado */
+    position: relative;                /* Para posicionar o pseudo-elemento */
+    padding-bottom: 15px;              /* Espaço para a linha decorativa */
+    padding-top: 15px;
+}
+
+/* Linha decorativa abaixo do título da seção */
+.selection-section h2::after {
+    content: "";                       /* Elemento vazio */
+    position: absolute;                /* Posiciona relativo ao h2 */
+    bottom: 0;                         /* Alinha na base do h2 */
+    left: 50%;                         /* Centraliza horizontalmente */
+    transform: translateX(-50%);       /* Ajusta para centralizar precisamente */
+    width: 80px;                       /* Largura da linha */
+    height: 2px;                       /* Altura da linha */
+    background: linear-gradient(90deg, transparent, var(--dourado-sutil), transparent);
+    /* Gradiente para efeito fade nas extremidades */
+}
+
+.selection-section h2 i {
+    color: var(--dourado-sutil);       /* Cor dourada para o ícone */
+    margin-right: 10px;                /* Espaço entre ícone e texto */
+}
+
+/* 
+ * OPÇÕES MUSICAIS (CARDS)
+ */
+.music-options {
+    display: grid;                     /* Usa CSS Grid para layout responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Cria colunas que se ajustam automaticamente, mínimo 300px cada */
+    gap: 30px;                         /* Espaço entre os cards */
+    margin-top: 30px;                  /* Espaço acima do grid */
+}
+
+/* Estilo individual para cada card */
+.music-card {
+    background: rgba(26, 58, 95, 0.7); /* Fundo azul com transparência */
+    border-radius: 12px;               /* Bordas arredondadas */
+    padding: 35px 30px;                /* Espaçamento interno */
+    text-align: center;                /* Centraliza conteúdo do card */
+    transition: all 0.3s ease;         /* Transição suave para hover effects */
+    border: 1px solid rgba(212, 175, 55, 0.1); /* Borda sutil dourada */
+    position: relative;                /* Para posicionar pseudo-elementos */
+    overflow: hidden;                  /* Esconde conteúdo que ultrapassa bordas */
+    backdrop-filter: blur(10px);       /* Efeito de desfoque no fundo (moderno) */
+}
+
+/* Linha decorativa no topo do card (apenas no hover) */
+.music-card::before {
+    content: "";                       /* Elemento vazio */
+    position: absolute;                /* Posiciona sobre o card */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;                       /* Altura da linha */
+    background: linear-gradient(90deg, var(--dourado-sutil), var(--azul-suave));
+    /* Gradiente dourado para azul */
+    opacity: 0;                        /* Invisível por padrão */
+    transition: opacity 0.3s ease;     /* Aparece suavemente no hover */
+}
+
+/* Efeitos quando o mouse está sobre o card */
+.music-card:hover {
+    transform: translateY(-5px);       /* Levanta o card 5px */
+    border-color: rgba(212, 175, 55, 0.3); /* Torna a borda mais visível */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra para efeito de elevação */
+}
+
+/* Mostra a linha decorativa no hover */
+.music-card:hover::before {
+    opacity: 1;                        /* Torna a linha visível */
+}
+
+/* Container para o ícone do gênero musical */
+.music-icon {
+    font-size: 2.5rem;                 /* Tamanho grande para o ícone */
+    color: var(--dourado-sutil);       /* Cor dourada */
+    margin-bottom: 20px;               /* Espaço abaixo do ícone */
+    background: rgba(212, 175, 55, 0.1); /* Fundo sutil dourado */
+    width: 80px;                       /* Largura fixa */
+    height: 80px;                      /* Altura fixa (círculo) */
+    display: flex;                     /* Flexbox para centralizar conteúdo */
+    align-items: center;               /* Centraliza verticalmente */
+    justify-content: center;           /* Centraliza horizontalmente */
+    border-radius: 50%;                /* Torna circular */
+    margin: 0 auto 20px;               /* Centraliza e dá margem abaixo */
+}
+
+/* Nome do gênero musical dentro do card */
+.music-card h3 {
+    font-size: 1.8rem;                 /* Tamanho médio */
+    font-weight: 600;                  /* Peso semi-bold */
+    color: var(--branco);              /* Cor branca */
+    margin-bottom: 10px;               /* Espaço abaixo */
+}
+
+/* Descrição do gênero musical */
+.music-card p {
+    color: var(--cinza-medio);         /* Cor cinza para texto secundário */
+    font-size: 1rem;                   /* Tamanho padrão */
+    margin-bottom: 25px;               /* Espaço acima do botão */
+    line-height: 1.5;                  /* Espaçamento entre linhas */
+}
+
+/* Botão/link para explorar o gênero */
+.music-link {
+    display: inline-block;             /* Permite padding e transformações */
+    background: transparent;           /* Fundo transparente */
+    color: var(--dourado-sutil);       /* Cor dourada */
+    text-decoration: none;             /* Remove sublinhado padrão */
+    padding: 12px 28px;                /* Espaçamento interno */
+    border-radius: 50px;               /* Bordas completamente arredondadas */
+    font-weight: 500;                  /* Peso médio */
+    border: 1px solid var(--dourado-sutil); /* Borda dourada */
+    transition: all 0.3s ease;         /* Transição suave para hover */
+    font-size: 1rem;                   /* Tamanho padrão */
+}
+
+/* Efeitos no hover do botão */
+.music-link:hover {
+    background: var(--dourado-sutil);  /* Fundo dourado */
+    color: var(--azul-profundo);       /* Texto azul escuro para contraste */
+    transform: scale(1.05);            /* Aumenta levemente o tamanho */
+}
+
+/* Ícone dentro do botão */
+.music-link i {
+    margin-left: 8px;                  /* Espaço entre texto e ícone */
+    font-size: 0.9rem;                 /* Tamanho um pouco menor */
+}
+
+/* 
+ * FOOTER (RODAPÉ)
+ */
+.footer {
+    text-align: center;                /* Centraliza conteúdo */
+    padding: 30px 0;                   /* Espaçamento vertical */
+    border-top: 1px solid rgba(212, 175, 55, 0.2); /* Linha sutil no topo */
+    margin-top: 60px;                  /* Espaço acima do footer */
+    color: var(--cinza-medio);         /* Cor cinza para texto secundário */
+    font-size: 0.95rem;                /* Tamanho um pouco menor */
+}
+
+.footer p {
+    margin-bottom: 10px;               /* Espaço entre parágrafos */
+}
+
+.footer i {
+    margin-right: 8px;                 /* Espaço entre ícone e texto */
+    color: var(--dourado-sutil);       /* Cor dourada para ícones */
+}
+
+.credit {
+    font-size: 0.85rem;                /* Tamanho ainda menor */
+    font-style: italic;                /* Itálico para estilo */
+    color: var(--cinza-medio);         /* Cor cinza */
+    opacity: 0.7;                      /* Mais transparente */
+}
+
+/* 
+ * MEDIA QUERIES - RESPONSIVIDADE
+ */
+
+/* Tablets e telas menores (até 768px) */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.2rem;             /* Reduz tamanho do título */
+    }
+    
+    .selection-section h2 {
+        font-size: 1.5rem;             /* Reduz tamanho do subtítulo */
+    }
+    
+    .music-options {
+        grid-template-columns: 1fr;    /* Uma coluna em telas menores */
+        gap: 20px;                     /* Reduz espaço entre cards */
+    }
+    
+    .music-card {
+        padding: 25px 20px;            /* Reduz padding dos cards */
+    }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 40px 0 20px;          /* Reduz padding do header */
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;             /* Reduz ainda mais o título */
+    }
+    
+    .container {
+        padding: 0 15px;               /* Reduz padding lateral */
+    }
+}
+/* ==============================
+   BOTÃO ELEGANTE - VOLTAR AO HUB
+   Tema: Noite Estrelada de Van Gogh
+   ============================== */
+
+/* Container do botão */
+.back-to-hub-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000;
+}
+
+/* Estilo principal do botão */
+.hub-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 26px;
+    background: linear-gradient(135deg, 
+        rgba(40, 53, 147, 0.85) 0%, 
+        rgba(26, 35, 126, 0.9) 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 213, 79, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho estelar no fundo */
+.hub-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 213, 79, 0.15),
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+
+/* Efeitos de hover */
+.hub-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 213, 79, 0.3),
+        0 0 20px rgba(255, 213, 79, 0.2);
+    background: linear-gradient(135deg, 
+        rgba(40, 53, 147, 0.95) 0%, 
+        rgba(26, 35, 126, 0.95) 100%);
+}
+
+.hub-btn:hover::before {
+    left: 100%;
+}
+
+.hub-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.2s ease;
+}
+
+/* Ícone com efeito estrela */
+.hub-btn i {
+    font-size: 14px;
+    color: #ffd54f;
+    transition: all 0.4s ease;
+    text-shadow: 0 0 8px rgba(255, 213, 79, 0.5);
+}
+
+.hub-btn:hover i {
+    transform: translateX(-5px) rotate(-10deg);
+    color: #ffecb3;
+    text-shadow: 0 0 12px rgba(255, 213, 79, 0.8);
+}
+
+/* Texto do botão */
+.hub-btn span {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.hub-btn:hover span {
+    letter-spacing: 0.5px;
+}
+
+/* Efeito de partículas estelares (opcional) */
+.hub-btn::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    color: #ffd54f;
+    opacity: 0;
+    font-size: 12px;
+    transition: all 0.5s ease;
+}
+
+.hub-btn:hover::after {
+    right: 20px;
+    opacity: 0.8;
+}
+
+/* Versão compacta para mobile */
+@media (max-width: 768px) {
+    .back-to-hub-btn {
+        top: 20px;
+        left: 20px;
+    }
+    
+    .hub-btn {
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hub-btn {
+        padding: 12px 18px 12px 16px;
+        min-width: auto;
+    }
+    
+    .hub-btn span {
+        display: none;
+    }
+    
+    .hub-btn i {
+        margin: 0;
+        font-size: 16px;
+    }
+    
+    .hub-btn:hover i {
+        transform: scale(1.2) rotate(-15deg);
+    }
+    
+    .hub-btn::after {
+        display: none;
+    }
+}
+
+/* Animações suaves */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hub-btn {
+    animation: fadeInDown 0.6s ease-out 0.3s both;
+}
+
+/* Foco para acessibilidade */
+.hub-btn:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 3px rgba(255, 213, 79, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.3);
+}

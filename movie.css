@@ -1,0 +1,401 @@
+/* 
+ * CSS SIMPLES PARA LISTA DE INDICAÇÕES
+ * Tema minimalista inspirado em Noite Estrelada
+ */
+
+/* Cores principais */
+:root {
+    --azul-escuro: #0a1931;
+    --azul-medio: #1a3a5f;
+    --azul-claro: #2d5a8a;
+    --dourado: #d4af37;
+    --cinza-claro: #ecf0f1;
+    --branco: #ffffff;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--azul-escuro);
+    color: var(--cinza-claro);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Estrelas de fundo bem sutis */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20% 30%, var(--dourado) 1px, transparent 1px),
+        radial-gradient(1px 1px at 40% 70%, var(--dourado) 1px, transparent 1px),
+        radial-gradient(1px 1px at 60% 20%, var(--dourado) 1px, transparent 1px),
+        radial-gradient(1px 1px at 80% 50%, var(--dourado) 1px, transparent 1px);
+    background-size: 200px 200px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* Container principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header simples */
+.header {
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    color: var(--branco);
+    margin-bottom: 10px;
+}
+
+.header h1 i {
+    color: var(--dourado);
+    margin-right: 10px;
+}
+
+.subtitle {
+    color: var(--cinza-claro);
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Lista de filmes */
+.lista-filmes {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Item de filme */
+.filme-item {
+    display: flex;
+    background: rgba(26, 58, 95, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filme-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Capa do filme */
+.filme-capa {
+    flex: 0 0 150px;
+    background: var(--azul-medio);
+}
+
+.capa-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Informações do filme */
+.filme-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.filme-info h3 {
+    color: var(--branco);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.filme-detalhes {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--dourado);
+}
+
+.filme-detalhes span {
+    padding: 3px 8px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 3px;
+}
+
+.descricao {
+    color: var(--cinza-claro);
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Quem indicou */
+.indicacao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--dourado);
+    font-size: 0.9rem;
+    padding-top: 10px;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.indicacao i {
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    color: var(--cinza-claro);
+    font-size: 0.9rem;
+}
+
+.footer i {
+    color: var(--dourado);
+    margin-right: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .filme-item {
+        flex-direction: column;
+    }
+    
+    .filme-capa {
+        flex: 0 0 200px;
+        width: 100%;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .filme-detalhes {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .header {
+        padding: 20px 0;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .filme-info {
+        padding: 15px;
+    }
+    
+    .filme-info h3 {
+        font-size: 1.2rem;
+    }
+}
+/* ==============================
+   BOTÃO ELEGANTE - VOLTAR AO HUB
+   Tema: Noite Estrelada de Van Gogh
+   ============================== */
+
+/* Container do botão */
+.back-to-hub-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000;
+}
+
+/* Estilo principal do botão */
+.hub-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 26px;
+    background: linear-gradient(135deg, 
+        rgba(40, 53, 147, 0.85) 0%, 
+        rgba(26, 35, 126, 0.9) 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 213, 79, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho estelar no fundo */
+.hub-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 213, 79, 0.15),
+        transparent
+    );
+    transition: left 0.7s ease;
+}
+
+/* Efeitos de hover */
+.hub-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 213, 79, 0.3),
+        0 0 20px rgba(255, 213, 79, 0.2);
+    background: linear-gradient(135deg, 
+        rgba(40, 53, 147, 0.95) 0%, 
+        rgba(26, 35, 126, 0.95) 100%);
+}
+
+.hub-btn:hover::before {
+    left: 100%;
+}
+
+.hub-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.2s ease;
+}
+
+/* Ícone com efeito estrela */
+.hub-btn i {
+    font-size: 14px;
+    color: #ffd54f;
+    transition: all 0.4s ease;
+    text-shadow: 0 0 8px rgba(255, 213, 79, 0.5);
+}
+
+.hub-btn:hover i {
+    transform: translateX(-5px) rotate(-10deg);
+    color: #ffecb3;
+    text-shadow: 0 0 12px rgba(255, 213, 79, 0.8);
+}
+
+/* Texto do botão */
+.hub-btn span {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.hub-btn:hover span {
+    letter-spacing: 0.5px;
+}
+
+/* Efeito de partículas estelares (opcional) */
+.hub-btn::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    color: #ffd54f;
+    opacity: 0;
+    font-size: 12px;
+    transition: all 0.5s ease;
+}
+
+.hub-btn:hover::after {
+    right: 20px;
+    opacity: 0.8;
+}
+
+/* Versão compacta para mobile */
+@media (max-width: 768px) {
+    .back-to-hub-btn {
+        top: 20px;
+        left: 20px;
+    }
+    
+    .hub-btn {
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hub-btn {
+        padding: 12px 18px 12px 16px;
+        min-width: auto;
+    }
+    
+    .hub-btn span {
+        display: none;
+    }
+    
+    .hub-btn i {
+        margin: 0;
+        font-size: 16px;
+    }
+    
+    .hub-btn:hover i {
+        transform: scale(1.2) rotate(-15deg);
+    }
+    
+    .hub-btn::after {
+        display: none;
+    }
+}
+
+/* Animações suaves */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hub-btn {
+    animation: fadeInDown 0.6s ease-out 0.3s both;
+}
+
+/* Foco para acessibilidade */
+.hub-btn:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 3px rgba(255, 213, 79, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.3);
+}
