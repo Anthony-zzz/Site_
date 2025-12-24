@@ -348,4 +348,36 @@ function goToSlide(slideIndex) {
     
     // Reiniciar auto-play
     startCarouselAutoPlay();
+
 }
+// BOTÃO VOLTAR AO HUB - Versão simplificada
+(function() {
+    'use strict';
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Não criar botão na página do hub
+        if (window.location.pathname.includes('index.html') || 
+            window.location.pathname === '/' || 
+            window.location.pathname.endsWith('/')) {
+            return;
+        }
+        
+        // Criar botão
+        const container = document.createElement('div');
+        container.className = 'back-to-hub-btn';
+        
+        const button = document.createElement('a');
+        button.href = 'index.html';
+        button.className = 'hub-btn';
+        button.innerHTML = `
+            <i class="fas fa-arrow-left"></i>
+            <span>Voltar ao Hub</span>
+        `;
+        button.title = 'Retornar à página principal';
+        
+        container.appendChild(button);
+        document.body.appendChild(container);
+        
+        console.log('Botão "Voltar ao Hub" adicionado');
+    });
+})();
