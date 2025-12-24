@@ -756,4 +756,61 @@ body {
     }
     
     /* Remover referências a .filter-btn */
+
+}
+/* Estilos do botão "Voltar ao Hub" */
+.back-to-hub-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.hub-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.hub-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.hub-btn i {
+    font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .back-to-hub-btn {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .hub-btn span {
+        display: none;
+    }
+    
+    .hub-btn {
+        padding: 14px;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+    }
+    
+    .hub-btn i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
 }
