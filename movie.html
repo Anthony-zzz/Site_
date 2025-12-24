@@ -4,149 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indicações de Filmes</title>
-    <link rel="stylesheet" href="movie.css">
+    <link rel="stylesheet" href="food.movie.css">
+    <link rel="stylesheet" href="styles.css"> <!-- CSS compartilhado -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="movie.js"></script>
+    <script src="movie.js" defer></script>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1><i class="fas fa-film"></i> Indicações de Filmes</h1>
-            <p class="subtitle">Filmes selecionados</p>
+            <p class="subtitle">Filmes selecionados para você</p>
         </header>
         
         <main class="main-content">
-            <!-- Lista simples de filmes -->
-            <div class="lista-filmes">
-                
-                <!-- Filme 1 -->
-                <div class="filme-item">
-                    <div class="filme-capa">
-                        <div class="capa-img" style="background-image: url('https://m.media-amazon.com/images/M/MV5BODNmNTFjODgtYzJhOC00ZGYyLWE4NzctZmMxZWM4NjhmY2JhXkEyXkFqcGc@._V1_.jpg');"></div>
-                    </div>
-                    <div class="filme-info">
-                        <h3>12 Homens E Uma Sentença</h3>
-                        <div class="filme-detalhes">
-                            <span class="ano">1997</span>
-                            <span class="genero">Thriller/Ficção policial</span>
-                            <span class="duracao">1h 57m</span>
-                        </div>
-                        <p class="descricao">Seguindo o encerramento do caso do julgamento do assassinato cometido por um adolescente, os membros do júri devem chegar a um consenso sobre qual será o veredito.</p>
-                        <div class="indicacao">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Recomendado por: <strong>Anthony</strong></span>
-                        </div>
-                    </div>
+            <section class="movie-section">
+                <h2><i class="fas fa-film"></i> Nossas Indicações Cinematográficas</h2>
+                <div class="filmes-grid">
+                    <!-- Os filmes serão carregados dinamicamente aqui -->
                 </div>
-                
-                <!-- Filme 2 -->
-                <div class="filme-item">
-                    <div class="filme-capa">
-                        <div class="capa-img" style="background-image: url('https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
-                    </div>
-                    <div class="filme-info">
-                        <h3>Interestelar</h3>
-                        <div class="filme-detalhes">
-                            <span class="ano">2014</span>
-                            <span class="genero">Ficção científica/Aventura</span>
-                            <span class="duracao">2h 49m</span>
-                        </div>
-                        <p class="descricao">Equipe de exploradores viaja através de um buraco de minhoca para salvar a humanidade.</p>
-                        <div class="indicacao">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Recomendado por: <strong>Anthony</strong></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Filme 3 -->
-                <div class="filme-item">
-                    <div class="filme-capa">
-                        <div class="capa-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b3/CasablancaPoster-Gold.jpg');"></div>
-                    </div>
-                    <div class="filme-info">
-                        <h3>Casablanca</h3>
-                        <div class="filme-detalhes">
-                            <span class="ano">1942</span>
-                            <span class="genero">Romance/Guerra</span>
-                            <span class="duracao">1h 42m</span>
-                        </div>
-                        <p class="descricao">Durante a Segunda Guerra, um exilado norte-americano encontra refúgio na cidade de Casablanca, no Marrocos, e passa a administrar uma casa noturna.</p>
-                        <div class="indicacao">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Recomendado por: <strong>Anthony</strong></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Filme 4 -->
-                <div class="filme-item">
-                    <div class="filme-capa">
-                        <div class="capa-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReS5Od6ststjILRf7itNPxZF1TWcLW7knRnQ&s');"></div>
-                    </div>
-                    <div class="filme-info">
-                        <h3>O iluminado</h3>
-                        <div class="filme-detalhes">
-                            <span class="ano">1980</span>
-                            <span class="genero">Terror/Mistério</span>
-                            <span class="duracao">2h 23m</span>
-                        </div>
-                        <p class="descricao">The Shining(O iluminado) é um filme de terror psicológico de 1980 produzido e dirigido por Stanley Kubrick e co-escrito com a romancista Diane Johnson.</p>
-                        <div class="indicacao">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Recomendado por: <strong>Anthony</strong></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Filme 5 -->
-                <div class="filme-item">
-                    <div class="filme-capa">
-                        <div class="capa-img" style="background-image: url('https://imusic.b-cdn.net/images/item/original/946/5022366605946.jpg?movie-2020-i-want-to-eat-your-pancreas-dvd&class=scaled&v=1739865941');"></div>
-                    </div>
-                    <div class="filme-info">
-                        <h3>i want eat your pancreas</h3>
-                        <div class="filme-detalhes">
-                            <span class="ano">2018</span>
-                            <span class="genero">Romance/Drama</span>
-                            <span class="duracao">1h 48m</span>
-                        </div>
-                        <p class="descricao">Um estudante do ensino médio descobre que uma de suas colegas de classe, Sakura Yamauchi, sofre de uma doença terminal. Este segredo une os dois, enquanto ela vive seus últimos momentos.</p>
-                        <div class="indicacao">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Recomendado por: <strong>Anthony</strong></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Filme 6 -->
-                <div class="filme-item">
-                    <div class="filme-capa">
-                        <div class="capa-img" style="background-image: url('https://m.media-amazon.com/images/S/pv-target-images/c0bdf564fc4291d78c966b2ad5ecba2ba0cf592203a8e56ebbbfb3bbd96faae8.jpg');"></div>
-                    </div>
-                    <div class="filme-info">
-                        <h3>Cinema Paradiso</h3>
-                        <div class="filme-detalhes">
-                            <span class="ano">1988</span>
-                            <span class="genero">Drama/Melodrama</span>
-                            <span class="duracao">2h 35m</span>
-                        </div>
-                        <p class="descricao">Um cineasta relembra sua infância em uma pequena cidade italiana.</p>
-                        <div class="indicacao">
-                            <i class="fas fa-user-circle"></i>
-                            <span>Recomendado por: <strong>Anthony</strong></span>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+            </section>
         </main>
         
         <footer class="footer">
-            <p><i class="fas fa-theater-masks"></i> Indicações.</p>
+            <p><i class="fas fa-theater-masks"></i> Indicações cinematográficas</p>
+            <p class="credit">Clique nos filmes para marcar como assistido</p>
         </footer>
     </div>
 </body>
