@@ -1,261 +1,253 @@
 /*
- * JavaScript mínimo para página de indicações
- * Apenas funcionalidades básicas
+ * ARRAY COM TODAS AS INDICAÇÕES DE FILMES
+ * Baseado no seu HTML original
  */
+const movieIndications = [
+    {
+        title: "12 Homens E Uma Sentença",
+        description: "Seguindo o encerramento do caso do julgamento do assassinato cometido por um adolescente, os membros do júri devem chegar a um consenso sobre qual será o veredito.",
+        year: "1997",
+        genre: "Thriller/Ficção policial",
+        duration: "1h 57m",
+        recommendedBy: "Anthony",
+        icon: "fas fa-gavel",
+        image: "https://m.media-amazon.com/images/M/MV5BODNmNTFjODgtYzJhOC00ZGYyLWE4NzctZmMxZWM4NjhmY2JhXkEyXkFqcGc@._V1_.jpg",
+        curiosity: "O filme foi baseado em uma peça de teatro de 1954 e foi rodado em apenas 21 dias, quase inteiramente em um único cenário."
+    },
+    {
+        title: "Interestelar",
+        description: "Equipe de exploradores viaja através de um buraco de minhoca para salvar a humanidade.",
+        year: "2014",
+        genre: "Ficção científica/Aventura",
+        duration: "2h 49m",
+        recommendedBy: "Anthony",
+        icon: "fas fa-rocket",
+        image: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+        curiosity: "Para as cenas no planeta de água, a equipe construiu um tanque gigante com 1,2 milhão de litros de água e usou máquinas para criar ondas de 6 metros."
+    },
+    {
+        title: "Casablanca",
+        description: "Durante a Segunda Guerra, um exilado norte-americano encontra refúgio na cidade de Casablanca, no Marrocos, e passa a administrar uma casa noturna.",
+        year: "1942",
+        genre: "Romance/Guerra",
+        duration: "1h 42m",
+        recommendedBy: "Anthony",
+        icon: "fas fa-plane",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/CasablancaPoster-Gold.jpg",
+        curiosity: "A famosa frase 'Play it again, Sam' nunca é realmente dita no filme. O que Ingrid Bergman diz é: 'Play it, Sam. Play \"As Time Goes By\".'"
+    },
+    {
+        title: "O iluminado",
+        description: "The Shining(O iluminado) é um filme de terror psicológico de 1980 produzido e dirigido por Stanley Kubrick e co-escrito com a romancista Diane Johnson.",
+        year: "1980",
+        genre: "Terror/Mistério",
+        duration: "2h 23m",
+        recommendedBy: "Anthony",
+        icon: "fas fa-ghost",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReS5Od6ststjILRf7itNPxZF1TWcLW7knRnQ&s",
+        curiosity: "Shelley Duvall teve que repetir a cena do porrete 127 vezes, um recorde no Guinness Book para o maior número de takes de uma única cena."
+    },
+    {
+        title: "I Want Eat Your Pancreas",
+        description: "Um estudante do ensino médio descobre que uma de suas colegas de classe, Sakura Yamauchi, sofre de uma doença terminal. Este segredo une os dois, enquanto ela vive seus últimos momentos.",
+        year: "2018",
+        genre: "Romance/Drama",
+        duration: "1h 48m",
+        recommendedBy: "Anthony",
+        icon: "fas fa-heart",
+        image: "https://imusic.b-cdn.net/images/item/original/946/5022366605946.jpg?movie-2020-i-want-to-eat-your-pancreas-dvd&class=scaled&v=1739865941",
+        curiosity: "O título peculiar vem de uma crença japonesa antiga de que comer o órgão doente de alguém pode curar sua própria doença similar."
+    },
+    {
+        title: "Cinema Paradiso",
+        description: "Um cineasta relembra sua infância em uma pequena cidade italiana.",
+        year: "1988",
+        genre: "Drama/Melodrama",
+        duration: "2h 35m",
+        recommendedBy: "Anthony",
+        icon: "fas fa-film",
+        image: "https://m.media-amazon.com/images/S/pv-target-images/c0bdf564fc4291d78c966b2ad5ecba2ba0cf592203a8e56ebbbfb3bbd96faae8.jpg",
+        curiosity: "A versão estendida de 173 minutos, lançada em 2002, foi o corte original planejado pelo diretor, mas os distribuidores forçaram um corte mais curto para o lançamento original."
+    }
+];
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Apenas uma função simples para mostrar que o filme foi visto
-    marcarComoVisto();
+    console.log('Página de filmes carregada');
     
-    // Adiciona um efeito sutil de entrada para os filmes
-    animarEntradaFilmes();
+    // Carrega os filmes
+    loadMovies();
+    
+    // Inicializa botão hub
+    initHubButton();
+    
+    // Efeitos simples
+    initEffects();
 });
 
-function marcarComoVisto() {
-    // Encontra todos os itens de filme
-    const filmes = document.querySelectorAll('.filme-item');
+function loadMovies() {
+    const grid = document.querySelector('.filmes-grid');
+    if (!grid) {
+        console.error('Grid de filmes não encontrado');
+        return;
+    }
     
-    // Adiciona evento de clique simples
-    filmes.forEach(filme => {
-        filme.addEventListener('click', function() {
-            // Alterna uma classe simples para marcar como visto
-            this.classList.toggle('visto');
-            
-            // Adiciona um check visual
-            if (this.classList.contains('visto')) {
-                this.style.opacity = '0.7';
-                this.style.borderLeft = '3px solid #2ecc71';
-                console.log('Filme marcado como visto');
-            } else {
-                this.style.opacity = '1';
-                this.style.borderLeft = 'none';
-                console.log('Filme desmarcado');
-            }
+    grid.innerHTML = '';
+    
+    movieIndications.forEach(movie => {
+        const card = createMovieCard(movie);
+        grid.appendChild(card);
+    });
+    
+    console.log(`${movieIndications.length} filmes carregados`);
+}
+
+function createMovieCard(movie) {
+    const card = document.createElement('div');
+    card.className = 'movie-card';
+    
+    card.innerHTML = `
+        <div class="movie-header">
+            <div class="movie-capa">
+                <div class="capa-img" style="background-image: url('${movie.image}');"></div>
+            </div>
+            <div class="movie-icon">
+                <i class="${movie.icon}"></i>
+            </div>
+        </div>
+        <div class="movie-content">
+            <h3>${movie.title}</h3>
+            <div class="movie-meta">
+                <span class="movie-year"><i class="fas fa-calendar-alt"></i> ${movie.year}</span>
+                <span class="movie-genre"><i class="fas fa-tag"></i> ${movie.genre}</span>
+                <span class="movie-duration"><i class="fas fa-clock"></i> ${movie.duration}</span>
+            </div>
+            <p class="movie-description">${movie.description}</p>
+            <div class="movie-recommendation">
+                <i class="fas fa-user-circle"></i>
+                <span>Recomendado por: <strong>${movie.recommendedBy}</strong></span>
+            </div>
+            <div class="movie-actions">
+                <button class="watch-btn">
+                    <i class="fas fa-eye"></i> Marcar como visto
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Adiciona eventos
+    const watchBtn = card.querySelector('.watch-btn');
+    
+    if (watchBtn) {
+        watchBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            markAsWatched(card, this);
         });
+    }
+    
+    // Click no card para detalhes
+    card.addEventListener('click', function(e) {
+        if (!e.target.classList.contains('watch-btn')) {
+            toggleMovieDetails(card);
+        }
     });
+    
+    return card;
 }
 
-function animarEntradaFilmes() {
-    // Anima a entrada dos filmes um por um
-    const filmes = document.querySelectorAll('.filme-item');
+function markAsWatched(card, button) {
+    const isWatched = card.classList.toggle('watched');
     
-    filmes.forEach((filme, index) => {
-        // Começa invisível
-        filme.style.opacity = '0';
-        filme.style.transform = 'translateY(20px)';
-        filme.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        
-        // Anima com delay
-        setTimeout(() => {
-            filme.style.opacity = '1';
-            filme.style.transform = 'translateY(0)';
-        }, 100 + (index * 100));
-    });
-}
-// ===================================
-// BOTÃO ELEGANTE "VOLTAR AO HUB"
-// Versão simples e funcional
-// ===================================
-
-(function() {
-    'use strict';
-    
-    // Aguardar o DOM carregar
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+    if (isWatched) {
+        button.innerHTML = '<i class="fas fa-check-circle"></i> Já assisti!';
+        button.style.backgroundColor = '#27ae60';
+        button.style.color = 'white';
+        card.style.borderLeft = '4px solid #27ae60';
     } else {
-        init();
+        button.innerHTML = '<i class="fas fa-eye"></i> Marcar como visto';
+        button.style.backgroundColor = '';
+        button.style.color = '';
+        card.style.borderLeft = 'none';
     }
+}
+
+function toggleMovieDetails(card) {
+    const details = card.querySelector('.movie-details');
     
-    function init() {
-        // Não criar botão na página do hub
-        if (isHubPage()) return;
+    if (details) {
+        details.remove();
+    } else {
+        // Encontra o título do filme para buscar a curiosidade
+        const movieTitle = card.querySelector('h3').textContent;
+        const movie = movieIndications.find(m => m.title === movieTitle);
         
-        // Criar botão
-        createBackButton();
+        const extra = document.createElement('div');
+        extra.className = 'movie-details';
         
-        // Adicionar efeitos interativos
-        addButtonEffects();
+        // Informações adicionais baseadas no gênero
+        let additionalInfo = '';
+        if (movie.genre.includes('Drama') || movie.genre.includes('Romance')) {
+            additionalInfo = '<p><strong>Indicado para:</strong> Assistir com companhia</p>';
+        } else if (movie.genre.includes('Terror') || movie.genre.includes('Mistério')) {
+            additionalInfo = '<p><strong>Indicado para:</strong> Assistir à noite</p>';
+        } else {
+            additionalInfo = '<p><strong>Indicado para:</strong> Qualquer momento</p>';
+        }
         
-        console.log('✨ Botão "Voltar ao Hub" carregado com sucesso');
-    }
-    
-    // Verificar se está na página do hub
-    function isHubPage() {
-        const path = window.location.pathname;
-        return path.includes('index.html') || 
-               path === '/' || 
-               path.endsWith('/') ||
-               document.title.toLowerCase().includes('hub');
-    }
-    
-    // Criar o botão
-    function createBackButton() {
-        // Criar container
-        const container = document.createElement('div');
-        container.className = 'back-to-hub-btn';
-        
-        // Criar botão
-        const button = document.createElement('a');
-        button.href = 'index.html';
-        button.className = 'hub-btn';
-        button.innerHTML = `
-            <i class="fas fa-arrow-left"></i>
-            <span>Voltar ao Hub</span>
+        extra.innerHTML = `
+            <div class="details-content">
+                <p><strong>Curiosidade:</strong></p>
+                <p>${movie.curiosity || 'Este filme é considerado um clássico do cinema.'}</p>
+                ${additionalInfo}
+                <p><strong>Duração:</strong> ${movie.duration}</p>
+                <p><strong>Ano:</strong> ${movie.year}</p>
+            </div>
         `;
-        button.title = 'Retornar à página principal';
         
-        // Adicionar ao DOM
-        container.appendChild(button);
-        document.body.appendChild(container);
+        // Insere antes dos botões de ação
+        const actions = card.querySelector('.movie-actions');
+        card.querySelector('.movie-content').insertBefore(extra, actions);
+    }
+}
+
+function initHubButton() {
+    if (window.location.pathname.includes('index.html') || window.location.pathname === '/') return;
+    
+    const buttonHTML = `
+        <div class="back-to-hub-btn">
+            <a href="index.html" class="hub-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Voltar ao Hub</span>
+            </a>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('afterbegin', buttonHTML);
+}
+
+function initEffects() {
+    // Transição suave de entrada
+    const container = document.querySelector('.container');
+    if (container) {
+        container.style.opacity = '0';
+        container.style.transition = 'opacity 0.5s ease';
         
-        return button;
+        setTimeout(() => {
+            container.style.opacity = '1';
+        }, 100);
     }
     
-    // Adicionar efeitos interativos
-    function addButtonEffects() {
-        const button = document.querySelector('.hub-btn');
-        if (!button) return;
-        
-        // Efeito de clique
-        button.addEventListener('click', function(e) {
-            // Efeito visual de clique
-            this.style.transform = 'scale(0.95)';
+    // Anima cards
+    setTimeout(() => {
+        const cards = document.querySelectorAll('.movie-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             
             setTimeout(() => {
-                this.style.transform = '';
-            }, 200);
-            
-            // Adicionar transição suave (opcional)
-            if (supportsSmoothTransition()) {
-                e.preventDefault();
-                document.body.style.opacity = '0.8';
-                document.body.style.transition = 'opacity 0.3s ease';
-                
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 300);
-            }
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 + (index * 100));
         });
-        
-        // Efeito de hover com estrelas
-        button.addEventListener('mouseenter', function() {
-            createHoverStars(this);
-        });
-        
-        // Navegação por teclado
-        document.addEventListener('keydown', function(e) {
-            // Tecla ESC para voltar ao hub
-            if (e.key === 'Escape' && !isInputFocused()) {
-                button.click();
-            }
-        });
-        
-        // Responsividade dinâmica
-        window.addEventListener('resize', updateButtonForMobile);
-        updateButtonForMobile(); // Executar uma vez
-    }
-    
-    // Criar efeito de estrelas no hover
-    function createHoverStars(button) {
-        // Apenas em telas maiores
-        if (window.innerWidth < 768) return;
-        
-        const rect = button.getBoundingClientRect();
-        
-        for (let i = 0; i < 2; i++) {
-            const star = document.createElement('div');
-            star.style.cssText = `
-                position: fixed;
-                width: 4px;
-                height: 4px;
-                background: #ffd54f;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 999;
-                top: ${rect.top + rect.height / 2 + (Math.random() * 10 - 5)}px;
-                left: ${rect.left - 10}px;
-                opacity: 0;
-                filter: blur(0.5px);
-            `;
-            
-            document.body.appendChild(star);
-            
-            // Animação
-            star.animate([
-                { 
-                    transform: 'scale(0) translateX(0)', 
-                    opacity: 0 
-                },
-                { 
-                    transform: 'scale(1) translateX(-20px)', 
-                    opacity: 0.8 
-                },
-                { 
-                    transform: 'scale(0) translateX(-40px)', 
-                    opacity: 0 
-                }
-            ], {
-                duration: 800,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-            }).onfinish = () => star.remove();
-        }
-    }
-    
-    // Atualizar botão para mobile
-    function updateButtonForMobile() {
-        const button = document.querySelector('.hub-btn');
-        const span = button?.querySelector('span');
-        
-        if (!button || !span) return;
-        
-        if (window.innerWidth <= 480) {
-            span.style.display = 'none';
-            button.style.padding = '14px';
-            button.style.borderRadius = '50%';
-            button.style.aspectRatio = '1/1';
-        } else {
-            span.style.display = 'inline';
-            button.style.padding = '14px 26px';
-            button.style.borderRadius = '50px';
-            button.style.aspectRatio = '';
-        }
-    }
-    
-    // Verificar se há foco em campos de input
-    function isInputFocused() {
-        const active = document.activeElement;
-        return active.tagName === 'INPUT' || 
-               active.tagName === 'TEXTAREA' || 
-               active.tagName === 'SELECT' ||
-               active.isContentEditable;
-    }
-    
-    // Verificar suporte a transições suaves
-    function supportsSmoothTransition() {
-        return 'transition' in document.body.style;
-    }
-    
-    // Adicionar estilos dinâmicos (apenas uma vez)
-    if (!document.querySelector('#hub-btn-styles')) {
-        const styles = document.createElement('style');
-        styles.id = 'hub-btn-styles';
-        styles.textContent = `
-            /* Animações para o botão */
-            @keyframes starTwinkle {
-                0%, 100% { opacity: 0.3; transform: scale(1); }
-                50% { opacity: 1; transform: scale(1.2); }
-            }
-            
-            /* Estado de carregamento */
-            .page-transition {
-                animation: fadeOut 0.4s ease forwards;
-            }
-            
-            @keyframes fadeOut {
-                to { opacity: 0.7; }
-            }
-        `;
-        document.head.appendChild(styles);
-    }
-})();
+    }, 200);
+}
