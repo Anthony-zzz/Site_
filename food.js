@@ -1,281 +1,277 @@
 /*
- * JavaScript mínimo para página de comidas
+ * ARRAY COM TODAS AS INDICAÇÕES DE COMIDAS
+ * Baseado no seu HTML original
  */
+const foodIndications = [
+    {
+        title: "Sorvete de Flocos",
+        description: "Sorvetinho bom demais.",
+        type: "Sobremesa",
+        difficulty: "Fácil",
+        time: "Imediato",
+        recommendedBy: "Anthony",
+        icon: "fas fa-ice-cream",
+        image: "https://www.sabornamesa.com.br/media/k2/items/cache/7f23dcfbe64e4348bd21e29b1ec76fb1_XL.jpg",
+        tags: ["Cremoso"]
+    },
+    {
+        title: "Pizza Strogonoff",
+        description: "molho da carne, queijo mussarela, a carne ensopada, o requeijão, orégano e, por último, a batata palha.",
+        type: "Prato Principal",
+        difficulty: "Médio",
+        time: "1h",
+        recommendedBy: "Anthony",
+        icon: "fas fa-pizza-slice",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0RVN6Q8uWlatJzGGzagsJs6H-6wCOsoT2hA&s",
+        tags: ["Caseira"]
+    },
+    {
+        title: "Arroz com linguiça e bacon",
+        description: "Arrozinho bom, confia.",
+        type: "Prato Principal",
+        difficulty: "Fácil",
+        time: "40min",
+        recommendedBy: "Anthony",
+        icon: "fas fa-bowl-rice",
+        image: "https://acarnequeomundoprefere.com.br/uploads/media/image/frimesa-receita-arroz-com-linguica-frescal-horizontal-alta.jpg",
+        tags: ["Caseira"]
+    },
+    {
+        title: "Frango à parmegiana",
+        description: "Frango à parmegiana ou frango à parmegiana é um prato que consiste em peito de frango empanado coberto com molho de tomate e mussarela, parmesão ou provolone.",
+        type: "Prato Principal",
+        difficulty: "Médio",
+        time: "50min",
+        recommendedBy: "Anthony",
+        icon: "fas fa-drumstick-bite",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIEXQTxOKh3f40SCdNL5Gtel_KhtJ4hnc1lw&s",
+        tags: ["Caseira", "Carne"]
+    },
+    {
+        title: "Brownie",
+        description: "Brownie é uma sobremesa de chocolate típico da culinária dos Estados Unidos e pode considerar-se um bolo feito num tabuleiro para bolos e partido em pequenos quadrados.",
+        type: "Sobremesa",
+        difficulty: "Fácil",
+        time: "30min",
+        recommendedBy: "Anthony",
+        icon: "fas fa-cookie-bite",
+        image: "https://static.itdg.com.br/images/360-240/9e621f4e0b36756979fda3f87f8279a5/340593-original.jpg",
+        tags: ["Cremoso"]
+    },
+    {
+        title: "Pudim",
+        description: "Pudim é a denominação genérica de dois tipos de alimentos. Saber qual desses dois alimentos é considerado pudim varia entre diversas regiões geográficas.",
+        type: "Sobremesa",
+        difficulty: "Médio",
+        time: "1h 30min",
+        recommendedBy: "Anthony",
+        icon: "fas fa-custard",
+        image: "https://static.itdg.com.br/images/360-240/3a4ad9def4cfa845063f443b85d2a463/245042-363669-original.jpg",
+        tags: ["Cremoso"]
+    }
+];
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Página de indicações de comidas carregada');
+    console.log('Página de comidas carregada');
     
-    // Marcar como experimentada
-    marcarComoExperimentada();
+    // Carrega as comidas
+    loadFoods();
     
-    // Animação simples de entrada
-    animarEntradaComidas();
+    // Inicializa botão hub
+    initHubButton();
+    
+    // Efeitos simples
+    initEffects();
 });
 
-function marcarComoExperimentada() {
-    const comidas = document.querySelectorAll('.comida-item');
+function loadFoods() {
+    const grid = document.querySelector('.comidas-grid');
+    if (!grid) {
+        console.error('Grid de comidas não encontrado');
+        return;
+    }
     
-    comidas.forEach(comida => {
-        comida.addEventListener('click', function() {
-            // Alterna a marcação
-            this.classList.toggle('experimentada');
-            
-            // Efeito visual simples
-            if (this.classList.contains('experimentada')) {
-                this.style.opacity = '0.8';
-                this.style.borderLeft = '3px solid #27ae60';
-                console.log('Comida marcada como experimentada');
-                
-                // Adiciona ícone de check
-                const check = document.createElement('div');
-                check.className = 'check-experimentada';
-                check.innerHTML = '<i class="fas fa-check"></i> Experimentei!';
-                check.style.position = 'absolute';
-                check.style.top = '10px';
-                check.style.right = '10px';
-                check.style.background = 'rgba(39, 174, 96, 0.9)';
-                check.style.color = 'white';
-                check.style.padding = '5px 10px';
-                check.style.borderRadius = '4px';
-                check.style.fontSize = '0.8rem';
-                check.style.zIndex = '10';
-                
-                this.style.position = 'relative';
-                this.appendChild(check);
-                
-            } else {
-                this.style.opacity = '1';
-                this.style.borderLeft = 'none';
-                console.log('Comida desmarcada');
-                
-                // Remove o ícone de check
-                const check = this.querySelector('.check-experimentada');
-                if (check) {
-                    check.remove();
-                }
-            }
-        });
+    grid.innerHTML = '';
+    
+    foodIndications.forEach(food => {
+        const card = createFoodCard(food);
+        grid.appendChild(card);
     });
+    
+    console.log(`${foodIndications.length} comidas carregadas`);
 }
 
-function animarEntradaComidas() {
-    const comidas = document.querySelectorAll('.comida-item');
+function createFoodCard(food) {
+    const card = document.createElement('div');
+    card.className = 'food-card';
     
-    comidas.forEach((comida, index) => {
-        comida.style.opacity = '0';
-        comida.style.transform = 'translateY(20px)';
-        comida.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    const tagsHTML = food.tags.map(tag => `<span class="food-tag">${tag}</span>`).join('');
+    
+    card.innerHTML = `
+        <div class="food-header">
+            <div class="food-imagem">
+                <div class="imagem" style="background-image: url('${food.image}');"></div>
+            </div>
+            <div class="food-icon">
+                <i class="${food.icon}"></i>
+            </div>
+        </div>
+        <div class="food-content">
+            <h3>${food.title}</h3>
+            <div class="food-meta">
+                <span class="food-type"><i class="fas fa-utensil-spoon"></i> ${food.type}</span>
+                <span class="food-difficulty"><i class="fas fa-signal"></i> ${food.difficulty}</span>
+                <span class="food-time"><i class="far fa-clock"></i> ${food.time}</span>
+            </div>
+            <p class="food-description">${food.description}</p>
+            <div class="food-recommendation">
+                <i class="fas fa-user-circle"></i>
+                <span>Recomendado por: <strong>${food.recommendedBy}</strong></span>
+            </div>
+            ${food.tags.length ? `<div class="food-tags">${tagsHTML}</div>` : ''}
+            <div class="food-actions">
+                <button class="try-btn">
+                    <i class="fas fa-check"></i> Já experimentei
+                </button>
+                <button class="info-btn">
+                    <i class="fas fa-info-circle"></i> Mais detalhes
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Adiciona eventos
+    const tryBtn = card.querySelector('.try-btn');
+    const infoBtn = card.querySelector('.info-btn');
+    
+    if (tryBtn) {
+        tryBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            markAsTried(card, this);
+        });
+    }
+    
+    if (infoBtn) {
+        infoBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleDetails(card, this);
+        });
+    }
+    
+    return card;
+}
+
+function markAsTried(card, button) {
+    const isTried = card.classList.toggle('tried');
+    
+    if (isTried) {
+        button.innerHTML = '<i class="fas fa-check-circle"></i> Já provei!';
+        button.style.backgroundColor = '#e67e22';
+        button.style.color = 'white';
+        card.style.borderLeft = '4px solid #e67e22';
+    } else {
+        button.innerHTML = '<i class="fas fa-check"></i> Já experimentei';
+        button.style.backgroundColor = '';
+        button.style.color = '';
+        card.style.borderLeft = 'none';
+    }
+}
+
+function toggleDetails(card, button) {
+    const details = card.querySelector('.extra-details');
+    
+    if (details) {
+        details.remove();
+        button.innerHTML = '<i class="fas fa-info-circle"></i> Mais detalhes';
+    } else {
+        // Encontra o título da comida para buscar dicas específicas
+        const foodTitle = card.querySelector('h3').textContent;
+        const food = foodIndications.find(f => f.title === foodTitle);
+        
+        const extra = document.createElement('div');
+        extra.className = 'extra-details';
+        
+        // Dicas específicas baseadas no tipo de comida
+        let tips = '';
+        if (food.type === 'Sobremesa') {
+            tips = `
+                <li>Melhor servida gelada</li>
+                <li>Perfeita para ocasiões especiais</li>
+                <li>Combina bem comigo</li>
+            `;
+        } else if (food.type === 'Prato Principal') {
+            tips = `
+                <li>Ideal para o almoço ou jantar</li>
+                <li>Serve 2-3 pessoas</li>
+                <li>Acompanha bem com uma salada</li>
+                <li>E posso te acompanhar na refeição</li>
+            `;
+        } else {
+            tips = `
+                <li>Ótima opção para lanches</li>
+                <li>Fácil de preparar</li>
+                <li>Versátil e prática</li>
+            `;
+        }
+        
+        extra.innerHTML = `
+            <div class="details-content">
+                <p><strong>Dicas de preparo:</strong></p>
+                <ul>
+                    ${tips}
+                </ul>
+                <p><strong>Dificuldade:</strong> ${food.difficulty}</p>
+                <p><strong>Tempo estimado:</strong> ${food.time}</p>
+            </div>
+        `;
+        
+        // Insere antes dos botões de ação
+        const actions = card.querySelector('.food-actions');
+        card.querySelector('.food-content').insertBefore(extra, actions);
+        
+        button.innerHTML = '<i class="fas fa-times-circle"></i> Fechar detalhes';
+    }
+}
+
+function initHubButton() {
+    if (window.location.pathname.includes('index.html') || window.location.pathname === '/') return;
+    
+    const buttonHTML = `
+        <div class="back-to-hub-btn">
+            <a href="index.html" class="hub-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Voltar ao Hub</span>
+            </a>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('afterbegin', buttonHTML);
+}
+
+function initEffects() {
+    // Transição suave de entrada
+    const container = document.querySelector('.container');
+    if (container) {
+        container.style.opacity = '0';
+        container.style.transition = 'opacity 0.5s ease';
         
         setTimeout(() => {
-            comida.style.opacity = '1';
-            comida.style.transform = 'translateY(0)';
-        }, 100 + (index * 100));
-    });
-}
-// ===================================
-// BOTÃO ELEGANTE "VOLTAR AO HUB"
-// Versão simples e funcional
-// ===================================
-
-(function() {
-    'use strict';
-    
-    // Aguardar o DOM carregar
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+            container.style.opacity = '1';
+        }, 100);
     }
     
-    function init() {
-        // Não criar botão na página do hub
-        if (isHubPage()) return;
-        
-        // Criar botão
-        createBackButton();
-        
-        // Adicionar efeitos interativos
-        addButtonEffects();
-        
-        console.log('✨ Botão "Voltar ao Hub" carregado com sucesso');
-    }
-    
-    // Verificar se está na página do hub
-    function isHubPage() {
-        const path = window.location.pathname;
-        return path.includes('index.html') || 
-               path === '/' || 
-               path.endsWith('/') ||
-               document.title.toLowerCase().includes('hub');
-    }
-    
-    // Criar o botão
-    function createBackButton() {
-        // Criar container
-        const container = document.createElement('div');
-        container.className = 'back-to-hub-btn';
-        
-        // Criar botão
-        const button = document.createElement('a');
-        button.href = 'index.html';
-        button.className = 'hub-btn';
-        button.innerHTML = `
-            <i class="fas fa-arrow-left"></i>
-            <span>Voltar ao Hub</span>
-        `;
-        button.title = 'Retornar à página principal';
-        
-        // Adicionar ao DOM
-        container.appendChild(button);
-        document.body.appendChild(container);
-        
-        return button;
-    }
-    
-    // Adicionar efeitos interativos
-    function addButtonEffects() {
-        const button = document.querySelector('.hub-btn');
-        if (!button) return;
-        
-        // Efeito de clique
-        button.addEventListener('click', function(e) {
-            // Efeito visual de clique
-            this.style.transform = 'scale(0.95)';
+    // Anima cards
+    setTimeout(() => {
+        const cards = document.querySelectorAll('.food-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             
             setTimeout(() => {
-                this.style.transform = '';
-            }, 200);
-            
-            // Adicionar transição suave (opcional)
-            if (supportsSmoothTransition()) {
-                e.preventDefault();
-                document.body.style.opacity = '0.8';
-                document.body.style.transition = 'opacity 0.3s ease';
-                
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 300);
-            }
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100 + (index * 100));
         });
-        
-        // Efeito de hover com estrelas
-        button.addEventListener('mouseenter', function() {
-            createHoverStars(this);
-        });
-        
-        // Navegação por teclado
-        document.addEventListener('keydown', function(e) {
-            // Tecla ESC para voltar ao hub
-            if (e.key === 'Escape' && !isInputFocused()) {
-                button.click();
-            }
-        });
-        
-        // Responsividade dinâmica
-        window.addEventListener('resize', updateButtonForMobile);
-        updateButtonForMobile(); // Executar uma vez
-    }
-    
-    // Criar efeito de estrelas no hover
-    function createHoverStars(button) {
-        // Apenas em telas maiores
-        if (window.innerWidth < 768) return;
-        
-        const rect = button.getBoundingClientRect();
-        
-        for (let i = 0; i < 2; i++) {
-            const star = document.createElement('div');
-            star.style.cssText = `
-                position: fixed;
-                width: 4px;
-                height: 4px;
-                background: #ffd54f;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 999;
-                top: ${rect.top + rect.height / 2 + (Math.random() * 10 - 5)}px;
-                left: ${rect.left - 10}px;
-                opacity: 0;
-                filter: blur(0.5px);
-            `;
-            
-            document.body.appendChild(star);
-            
-            // Animação
-            star.animate([
-                { 
-                    transform: 'scale(0) translateX(0)', 
-                    opacity: 0 
-                },
-                { 
-                    transform: 'scale(1) translateX(-20px)', 
-                    opacity: 0.8 
-                },
-                { 
-                    transform: 'scale(0) translateX(-40px)', 
-                    opacity: 0 
-                }
-            ], {
-                duration: 800,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
-            }).onfinish = () => star.remove();
-        }
-    }
-    
-    // Atualizar botão para mobile
-    function updateButtonForMobile() {
-        const button = document.querySelector('.hub-btn');
-        const span = button?.querySelector('span');
-        
-        if (!button || !span) return;
-        
-        if (window.innerWidth <= 480) {
-            span.style.display = 'none';
-            button.style.padding = '14px';
-            button.style.borderRadius = '50%';
-            button.style.aspectRatio = '1/1';
-        } else {
-            span.style.display = 'inline';
-            button.style.padding = '14px 26px';
-            button.style.borderRadius = '50px';
-            button.style.aspectRatio = '';
-        }
-    }
-    
-    // Verificar se há foco em campos de input
-    function isInputFocused() {
-        const active = document.activeElement;
-        return active.tagName === 'INPUT' || 
-               active.tagName === 'TEXTAREA' || 
-               active.tagName === 'SELECT' ||
-               active.isContentEditable;
-    }
-    
-    // Verificar suporte a transições suaves
-    function supportsSmoothTransition() {
-        return 'transition' in document.body.style;
-    }
-    
-    // Adicionar estilos dinâmicos (apenas uma vez)
-    if (!document.querySelector('#hub-btn-styles')) {
-        const styles = document.createElement('style');
-        styles.id = 'hub-btn-styles';
-        styles.textContent = `
-            /* Animações para o botão */
-            @keyframes starTwinkle {
-                0%, 100% { opacity: 0.3; transform: scale(1); }
-                50% { opacity: 1; transform: scale(1.2); }
-            }
-            
-            /* Estado de carregamento */
-            .page-transition {
-                animation: fadeOut 0.4s ease forwards;
-            }
-            
-            @keyframes fadeOut {
-                to { opacity: 0.7; }
-            }
-        `;
-        document.head.appendChild(styles);
-    }
-})();
+    }, 200);
+}
