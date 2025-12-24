@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacidade | Noite Estrelada</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="priv.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Fundo estrelado especial -->
+    <div class="starry-background"></div>
+
+    <!-- Efeitos especiais minimalistas -->
+    <div class="privacy-effects">
+        <div class="floating-dots"></div>
+        <div class="subtle-glow"></div>
+    </div>
+
+    <!-- Container principal minimalista -->
+    <div class="privacy-simple-container">
+
+        <!-- Logo/Ícone de segurança -->
+        <div class="privacy-icon-wrapper">
+            <div class="privacy-icon">
+                <div class="icon-circle">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <div class="icon-rings">
+                    <div class="icon-ring"></div>
+                    <div class="icon-ring"></div>
+                    <div class="icon-ring"></div>
+                </div>
+            </div>
+
+            <h1 class="privacy-simple-title">
+                <span class="privacy-text">Privacidade</span>
+                <span class="subtext">não é brincadeira</span>
+            </h1>
+        </div>
+
+        <!-- Separador elegante -->
+        <div class="simple-divider">
+            <div class="divider-dash"></div>
+            <div class="divider-dash"></div>
+            <div class="divider-dash"></div>
+        </div>
+
+        <!-- Container da imagem -->
+        <div class="image-master-container">
+            <!-- Moldura especial -->
+            <div class="image-frame">
+                <!-- Decoração superior da moldura -->
+                <div class="frame-decoration top-decoration">
+                    <div class="decoration-left">
+                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="decoration-center">
+                        <span>CONFIDENCIAL</span>
+                    </div>
+                    <div class="decoration-right">
+                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+
+                <!-- Área da imagem -->
+                <div class="image-content-area">
+                    <!-- Lado esquerdo decorativo -->
+                    <div class="image-side left-side">
+                        <div class="side-pattern">
+                            <div class="pattern-line"></div>
+                            <div class="pattern-dot"></div>
+                            <div class="pattern-line"></div>
+                            <div class="pattern-dot"></div>
+                            <div class="pattern-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Imagem principal -->
+                    <div class="main-image-container" id="imageContainer">
+                        <div class="image-loader">
+                            <div class="loader-circle"></div>
+                            <div class="loader-circle"></div>
+                            <div class="loader-circle"></div>
+                        </div>
+
+                        <!-- Substitua esta URL pela sua imagem -->
+                        <img src="imgs/volei.jpg" alt="Minha imagem de privacidade" class="privacy-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
+
+                        <!-- Efeitos sobre a imagem -->
+                        <div class="image-overlay"></div>
+                        <div class="image-shine"></div>
+
+                        <!-- Elementos decorativos flutuantes -->
+                        <div class="floating-element el-1">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="floating-element el-2">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="floating-element el-3">
+                            <i class="fas fa-asterisk"></i>
+                        </div>
+                    </div>
+
+                    <!-- Lado direito decorativo -->
+                    <div class="image-side right-side">
+                        <div class="side-pattern">
+                            <div class="pattern-line"></div>
+                            <div class="pattern-dot"></div>
+                            <div class="pattern-line"></div>
+                            <div class="pattern-dot"></div>
+                            <div class="pattern-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decoração inferior da moldura -->
+                <div class="frame-decoration bottom-decoration">
+                    <div class="decoration-left">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <div class="decoration-center">
+                        <div class="security-level">
+                            <span>NÍVEL DE SEGURANÇA:</span>
+                            <div class="level-indicator">
+                                <div class="level-bar"></div>
+                                <div class="level-bar"></div>
+                                <div class="level-bar"></div>
+                                <div class="level-bar active"></div>
+                                <div class="level-bar active"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="decoration-right">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles da imagem (discretos) -->
+            <div class="image-controls">
+                <button class="control-btn" id="viewDetails">
+                    <i class="fas fa-search"></i>
+                    <span class="btn-text">Detalhes</span>
+                </button>
+                <button class="control-btn" id="toggleEffects">
+                    <i class="fas fa-magic"></i>
+                    <span class="btn-text">Efeitos</span>
+                </button>
+                <button class="control-btn" id="protectImage">
+                    <i class="fas fa-lock"></i>
+                    <span class="btn-text">Proteger</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Área da legenda -->
+        <div class="caption-section">
+            <div class="caption-container">
+                <!-- Ícone decorativo -->
+                <div class="caption-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+
+                <!-- A famosa legenda -->
+                <div class="caption-content">
+                    <p class="main-caption" id="mainCaption">
+                        eu jogo melhor que você, aceite heehehe
+                    </p>
+
+                    <!-- Assinatura/rodapé da legenda -->
+                    <div class="caption-footer">
+                        <div class="signature-line"></div>
+                        <div class="signature">
+                            <i class="fas fa-pen-nib"></i>
+                            <span>Declaração de Superioridade</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ícone decorativo -->
+                <div class="caption-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+            </div>
+
+            <!-- Controles da legenda -->
+            <div class="caption-controls">
+                <button class="caption-btn" id="revealCaption">
+                    <i class="fas fa-eye"></i>
+                    Revelar
+                </button>
+                <button class="caption-btn" id="animateCaption">
+                    <i class="fas fa-play"></i>
+                    Animar
+                </button>
+                <button class="caption-btn" id="shareCaption">
+                    <i class="fas fa-share-alt"></i>
+                    Compartilhar
+                </button>
+            </div>
+        </div>
+
+        <!-- Separador final -->
+        <div class="simple-divider">
+            <div class="divider-dash"></div>
+            <div class="divider-dash"></div>
+            <div class="divider-dash"></div>
+        </div>
+
+        <!-- Rodapé minimalista -->
+        <footer class="privacy-simple-footer">
+            <div class="privacy-status">
+                <div class="status-item">
+                    <div class="status-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <div class="status-text">
+                        <span class="status-value" id="privacyLevel">Alto</span>
+                        <span class="status-label">Nível de Privacidade</span>
+                    </div>
+                </div>
+
+                <div class="status-item">
+                    <div class="status-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="status-text">
+                        <span class="status-value" id="viewCount">1</span>
+                        <span class="status-label">Visualização</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <a href="index.html" class="nav-btn home-btn">
+                    <i class="fas fa-home"></i>
+                    Página Inicial
+                </a>
+
+                <button class="nav-btn accept-btn" id="acceptStatement">
+                    <i class="fas fa-handshake"></i>
+                    Aceitar Verdade
+                </button>
+
+                <a href="sobre.html" class="nav-btn about-btn">
+                    <i class="fas fa-info-circle"></i>
+                    Sobre
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <p>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Esta página é tão privada que até nós esquecemos o que tem aqui
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de detalhes -->
+    <div class="details-modal" id="detailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes da Imagem</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="image-info">
+                    <div class="info-row">
+                        <span class="info-label">Resolução:</span>
+                        <span class="info-value" id="resolutionInfo">Carregando...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Tamanho:</span>
+                        <span class="info-value" id="sizeInfo">Carregando...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Formato:</span>
+                        <span class="info-value" id="formatInfo">Carregando...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Privacidade:</span>
+                        <span class="info-value">
+                            <i class="fas fa-lock"></i>
+                            Protegida
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="priv.js"></script>
+</body>
+
+</html>
