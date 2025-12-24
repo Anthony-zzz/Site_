@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livraria Noite Estrelada</title>
+    <link rel="stylesheet" href="books.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fundo estrelado -->
+    <div id="stars-container"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-star-and-crescent"></i>
+                <h1>Livraria Noite Estrelada</h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home" class="active">Início</a></li>
+                    <li><a href="#carousel">Destaques</a></li>
+                    <li><a href="#cards">Livros</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Hero -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Descubra Universos Literários</h2>
+                    <p class="hero-subtitle">Em noites estreladas, histórias ganham vida e páginas se tornam portais para mundos infinitos.</p>
+                    <a href="#cards" class="hero-button">Explorar Livros</a>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-book">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrossel -->
+        <section class="carousel-section" id="carousel">
+            <div class="container">
+                <h2 class="section-title">Livros em Destaque</h2>
+                <p class="section-subtitle">Obras que brilham como estrelas no céu da literatura</p>
+                
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <!-- Itens do carrossel serão adicionados via JavaScript -->
+                        </div>
+                        
+                        <!-- Botões de navegação do carrossel -->
+                        <button class="carousel-btn prev-btn" aria-label="Slide anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next-btn" aria-label="Próximo slide">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <!-- Indicadores do carrossel -->
+                        <div class="carousel-indicators">
+                            <!-- Serão gerados via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards de livros -->
+        <section class="cards-section" id="cards">
+            <div class="container">
+                <h2 class="section-title">Nossa Coleção</h2>
+                
+                <div class="cards-container">
+                    <!-- Cards serão adicionados via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <i class="fas fa-star-and-crescent"></i>
+                        <h3>Livraria Noite Estrelada</h3>
+                        <p>Levando histórias que brilham no escuro desde 2023</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="#home">Início</a></li>
+                            <li><a href="#carousel">Destaques</a></li>
+                            <li><a href="#cards">Livros</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>Contato</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> Rua das Estrelas</p>
+                        <p><i class="fas fa-envelope"></i> contato@noiteestrelada.com</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; Livraria Noite Estrelada. Todos os direitos reservados pra você.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="books.js"></script>
+</body>
+</html>
