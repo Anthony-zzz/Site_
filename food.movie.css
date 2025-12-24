@@ -1,0 +1,569 @@
+/* 
+ * CSS COMPARTILHADO - Estilos base para todas as páginas
+ * Baseado no music.css mas sem conteúdo específico de música
+ */
+
+/* VARIÁVEIS DE CORES */
+:root {
+    --azul-profundo: #0a1931;
+    --azul-medio: #1a3a5f;
+    --azul-suave: #2d5a8a;
+    --dourado-sutil: #d4af37;
+    --dourado-claro: #f4e4a6;
+    --cinza-escuro: #2c3e50;
+    --cinza-medio: #7f8c8d;
+    --cinza-claro: #ecf0f1;
+    --branco: #ffffff;
+    --preto: #1a1a2e;
+    --sucesso: #27ae60;
+    --alerta: #e67e22;
+}
+
+/* RESET E CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--azul-profundo);
+    color: var(--cinza-claro);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ESTRELAS DE FUNDO */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 10% 15%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 20% 35%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 30% 70%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 40% 50%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 60% 25%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 70% 60%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1px 1px at 80% 40%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1.5px 1.5px at 90% 75%, var(--dourado-claro) 1px, transparent 1px),
+        radial-gradient(1px 1px at 15% 85%, var(--dourado-sutil) 1px, transparent 1px),
+        radial-gradient(1px 1px at 85% 15%, var(--dourado-claro) 1px, transparent 1px);
+    background-size: 100px 100px;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 60px 0 30px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--branco);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.header h1 i {
+    color: var(--dourado-sutil);
+    margin-right: 15px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--cinza-medio);
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.main-content {
+    flex: 1;
+    padding-bottom: 40px;
+}
+
+.food-section, .movie-section {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.food-section h2, .movie-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--branco);
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.food-section h2::after, .movie-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dourado-sutil), transparent);
+}
+
+.food-section h2 i, .movie-section h2 i {
+    color: var(--dourado-sutil);
+    margin-right: 10px;
+}
+
+/* GRIDS */
+.comidas-grid, .filmes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* CARDS BASE */
+.food-card, .movie-card {
+    background: rgba(26, 58, 95, 0.7);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.food-card:hover, .movie-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* CABEÇALHO DOS CARDS */
+.food-header, .movie-header {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.food-imagem, .movie-capa {
+    width: 100%;
+    height: 100%;
+}
+
+.imagem, .capa-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.food-card:hover .imagem, .movie-card:hover .capa-img {
+    transform: scale(1.05);
+}
+
+.food-icon, .movie-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--dourado-sutil);
+    z-index: 2;
+}
+
+/* CONTEÚDO DOS CARDS */
+.food-content, .movie-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-content h3, .movie-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--branco);
+    margin-bottom: 10px;
+}
+
+/* METADADOS */
+.food-meta, .movie-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--cinza-medio);
+}
+
+.food-meta span, .movie-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.food-meta i, .movie-meta i {
+    color: var(--dourado-sutil);
+}
+
+/* DESCRIÇÃO */
+.food-description, .movie-description {
+    color: var(--cinza-claro);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* RECOMENDAÇÃO */
+.food-recommendation, .movie-recommendation {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+    color: var(--cinza-medio);
+    font-size: 0.9rem;
+}
+
+.food-recommendation i, .movie-recommendation i {
+    color: var(--dourado-sutil);
+}
+
+/* TAGS (apenas comida) */
+.food-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.food-tag {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--dourado-claro);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* AÇÕES */
+.food-actions, .movie-actions {
+    margin-top: auto;
+}
+
+.try-btn, .watch-btn, .info-btn {
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.try-btn, .watch-btn {
+    background: transparent;
+    color: var(--dourado-sutil);
+    border: 1px solid var(--dourado-sutil);
+}
+
+.try-btn:hover, .watch-btn:hover {
+    background: var(--dourado-sutil);
+    color: var(--azul-profundo);
+}
+
+.info-btn {
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.info-btn:hover {
+    background: rgba(52, 152, 219, 0.4);
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    margin-top: 60px;
+    color: var(--cinza-medio);
+    font-size: 0.95rem;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer i {
+    margin-right: 8px;
+    color: var(--dourado-sutil);
+}
+
+.credit {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--cinza-medio);
+    opacity: 0.7;
+}
+
+/* BOTÃO VOLTAR AO HUB */
+.back-to-hub-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1000;
+}
+
+.hub-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 26px;
+    background: linear-gradient(135deg, rgba(40, 53, 147, 0.85) 0%, rgba(26, 35, 126, 0.9) 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 213, 79, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hub-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 213, 79, 0.3), 0 0 20px rgba(255, 213, 79, 0.2);
+    background: linear-gradient(135deg, rgba(40, 53, 147, 0.95) 0%, rgba(26, 35, 126, 0.95) 100%);
+}
+
+.hub-btn i {
+    font-size: 14px;
+    color: #ffd54f;
+    transition: all 0.4s ease;
+}
+
+.hub-btn:hover i {
+    transform: translateX(-5px) rotate(-10deg);
+    color: #ffecb3;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .food-section h2, .movie-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .comidas-grid, .filmes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .back-to-hub-btn {
+        top: 20px;
+        left: 20px;
+    }
+    
+    .hub-btn {
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 40px 0 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hub-btn {
+        padding: 12px 18px 12px 16px;
+    }
+    
+    .hub-btn span {
+        display: none;
+    }
+    
+    .hub-btn i {
+        margin: 0;
+        font-size: 16px;
+    }
+}
+/* FOOD.CSS - Estilos específicos para página de comidas */
+
+/* Sobrescreve ou adiciona estilos específicos */
+.food-section {
+    background: rgba(26, 58, 95, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.food-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.try-btn, .info-btn {
+    flex: 1;
+}
+/* MOVIE.CSS - Estilos específicos para página de filmes */
+
+/* Sobrescreve ou adiciona estilos específicos */
+.movie-section {
+    background: rgba(26, 58, 95, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.movie-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.watch-btn {
+    flex: 1;
+}
+/* DETALHES EXTRAS - CORRIGIDO */
+.movie-details, .extra-details {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 3px solid var(--dourado-sutil);
+    animation: fadeIn 0.3s ease;
+    text-align: left; /* Garante alinhamento à esquerda */
+    width: 100%; /* Ocupa toda a largura */
+    box-sizing: border-box; /* Inclui padding no cálculo da largura */
+}
+
+.details-content {
+    width: 100%;
+}
+
+.details-content p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: var(--cinza-claro);
+}
+
+.details-content strong {
+    color: var(--dourado-sutil);
+    font-weight: 600;
+}
+
+.details-content ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.details-content li {
+    margin-bottom: 5px;
+    color: var(--cinza-medio);
+}
+
+/* ANIMAÇÃO PARA DETALHES */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* MELHORIAS PARA OS CARDS - Garantir que o conteúdo fique bem organizado */
+.food-content, .movie-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha tudo à esquerda */
+    text-align: left; /* Texto alinhado à esquerda */
+    width: 100%;
+}
+
+/* Garantir que os botões fiquem bem posicionados */
+.food-actions, .movie-actions {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+/* Ajustes para responsividade dos botões de ação */
+@media (max-width: 480px) {
+    .food-actions, .movie-actions {
+        flex-direction: column;
+    }
+    
+    .try-btn, .watch-btn, .info-btn {
+        width: 100%;
+    }
+}
+
+/* Ajustes específicos para os detalhes de comida */
+.extra-details {
+    margin-top: 15px;
+}
+
+/* Ajustes para garantir que tudo fique dentro do card */
+.food-card, .movie-card {
+    overflow: visible; /* Permite que os detalhes extra saiam se necessário */
+}
+
+/* Garantir que os detalhes não quebrem o layout */
+.movie-details, .extra-details {
+    position: relative;
+    z-index: 1;
+}
