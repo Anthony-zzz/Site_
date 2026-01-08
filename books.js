@@ -66,6 +66,13 @@ const bookCards = [
         author: "Rick Riordan",
         description: "Primeiro livro da série que mistura mitologia grega com aventuras contemporâneas.",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0ikkp7NiRDtPzUd8ArvowH-nPtAQLMqfcjg&s"
+    },
+    {
+        id: 7,
+        title: "A Arte da guerra",
+        author: "Sun Tzu",
+        description: "Os ensinamentos de A Arte da Guerra de Sun Tzu focam na estratégia, autoconhecimento e flexibilidade para vencer conflitos, destacando que vencer sem lutar é a suprema habilidade, através do planejamento detalhado, conhecimento do inimigo e de si mesmo, e a importância do timing e da dissimulação, aplicando-se a guerras, negócios e vida pessoal.",
+        image: "https://m.media-amazon.com/images/I/71FMCr5Z9rL.jpg"
     }
 ];
 
@@ -381,3 +388,4 @@ function goToSlide(slideIndex) {
         console.log('Botão "Voltar ao Hub" adicionado');
     });
 })();
+
